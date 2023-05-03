@@ -1,4 +1,0 @@
-USE DIMS;
-
-GO
-
