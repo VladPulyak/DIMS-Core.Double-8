@@ -1,6 +1,7 @@
 create or alter view vUserTask
 as
-select UT.UserId, UT.TaskId, T.Name, T.Description, T.StartDate, T.DeadlineDate, TS.StateName
-    from Task as T
-    join UserTask as UT on T.TaskId = UT.TaskId
-    join TaskState as TS on TS.StateId = UT.StateId
+select UserProfiles.UserId, Task.TaskId, Task.Name as TaskName, Task.Description, Task.StartDate, Task.DeadlineDate, TaskState.StateName
+from UserTask
+join Task on Task.TaskId = UserTask.TaskId
+join UserProfiles on UserProfiles.UserId = UserTask.UserId
+join TaskState on TaskState.StateId = UserTask.StateId
