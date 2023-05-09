@@ -5,5 +5,5 @@ create table TaskTrack
     TrackDate datetime not null,
     TrackNote nvarchar(250) not null,
     constraint PK_TaskTrackId primary key (TaskTrackId),
-    constraint FK_UserTaskId foreign key (UserTaskId) references UserTask(UserTaskId)
+    constraint FK_UserTaskId foreign key (UserTaskId) references UserTask(UserTaskId) on delete cascade on update cascade
 )

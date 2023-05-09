@@ -3,7 +3,5 @@ as
 BEGIN
     update UserTask
     set StateId = 2
-    where UserTaskId = 
-    (select UserTaskId from UserTask
-    where UserId = @UserId and TaskId = @TaskId)
+    where UserId = @UserId and TaskId = @TaskId
 END
