@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using DIMS_Core.DataAccessLayer.Interfaces;
 using DIMS_Core.DataAccessLayer.Models;
@@ -13,9 +13,9 @@ namespace DIMS_Core.DataAccessLayer.Repositories
     /// </summary>
     internal class UnitOfWork : IUnitOfWork
     {
-        private readonly DimsCoreContext _context;
+        private readonly DIMSContext _context;
 
-        public UnitOfWork(DimsCoreContext context,
+        public UnitOfWork(DIMSContext context,
                           IRepository<UserProfile> userProfileRepository,
                           IRepository<Direction> directionRepository,
                           IReadOnlyRepository<VUserProfile> vUserProfileRepository)

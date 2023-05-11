@@ -1,10 +1,10 @@
-﻿using DIMS_Core.DataAccessLayer.Models;
+using DIMS_Core.DataAccessLayer.Models;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
     public class DirectionRepository : Repository<Direction>
     {
-        public DirectionRepository(DimsCoreContext context) : base(context)
+        public DirectionRepository(DIMSContext context) : base(context)
         {
         }
     }

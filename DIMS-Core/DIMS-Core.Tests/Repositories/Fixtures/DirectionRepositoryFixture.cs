@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DIMS_Core.DataAccessLayer.Interfaces;
 using DIMS_Core.DataAccessLayer.Models;
 using DIMS_Core.DataAccessLayer.Repositories;
@@ -16,7 +16,7 @@ namespace DIMS_Core.Tests.Repositories.Fixtures
             InitDatabase();
         }
 
-        public DimsCoreContext Context { get; }
+        public DIMSContext Context { get; }
 
         public IRepository<Direction> Repository { get; }
 
@@ -40,16 +40,16 @@ namespace DIMS_Core.Tests.Repositories.Fixtures
             entry.State = EntityState.Detached;
         }
 
-        private static DimsCoreContext CreateContext()
+        private static DIMSContext CreateContext()
         {
             var options = GetOptions();
 
-            return new DimsCoreContext(options);
+            return new DIMSContext(options);
         }
 
-        private static DbContextOptions<DimsCoreContext> GetOptions()
+        private static DbContextOptions<DIMSContext> GetOptions()
         {
-            var builder = new DbContextOptionsBuilder<DimsCoreContext>().UseInMemoryDatabase(GetInMemoryDbName());
+            var builder = new DbContextOptionsBuilder<DIMSContext>().UseInMemoryDatabase(GetInMemoryDbName());
 
             return builder.Options;
         }
