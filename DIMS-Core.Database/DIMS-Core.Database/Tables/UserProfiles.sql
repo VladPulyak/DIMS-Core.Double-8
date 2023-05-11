@@ -16,5 +16,5 @@
     [MobilePhone]            NVARCHAR(50)  NOT NULL,
 
     CONSTRAINT PK_UserProfiles_UserId PRIMARY KEY (UserId),
-    CONSTRAINT FK_UserProfiles_Directions_DirectionId FOREIGN KEY (DirectionId) REFERENCES Directions (DirectionId) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT FK_UserProfiles_Directions_DirectionId FOREIGN KEY (DirectionId) REFERENCES Directions (DirectionId) on delete cascade on update cascade
 )

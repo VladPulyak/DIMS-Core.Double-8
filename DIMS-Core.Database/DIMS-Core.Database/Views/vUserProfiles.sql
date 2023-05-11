@@ -1,4 +1,4 @@
-﻿CREATE VIEW [dbo].[vUserProfiles]
+﻿CREATE or alter VIEW [dbo].[vUserProfiles]
 AS
 SELECT UserProfiles.UserId,
        (UserProfiles.FirstName + ' ' + UserProfiles.LastName) AS FullName,
