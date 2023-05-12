@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-
-#nullable disable
 
 namespace DIMS_Core.DataAccessLayer.Models
 {
-    public partial class VUserProfile
+    public class VUserProfile
     {
         public int UserId { get; set; }
         public string FullName { get; set; }

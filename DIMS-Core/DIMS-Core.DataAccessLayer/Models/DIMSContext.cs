@@ -2,11 +2,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
-
 namespace DIMS_Core.DataAccessLayer.Models
 {
-    public partial class DIMSContext : DbContext
+    public class DIMSContext : DbContext
     {
         public DIMSContext()
         {

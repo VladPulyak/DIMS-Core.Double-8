@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-
-#nullable disable
 
 namespace DIMS_Core.DataAccessLayer.Models
 {
-    public partial class TaskTrack
+    public class TaskTrack
     {
         public int TaskTrackId { get; set; }
         public int UserTaskId { get; set; }
