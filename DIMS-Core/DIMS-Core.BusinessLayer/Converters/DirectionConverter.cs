@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -24,7 +24,7 @@ namespace DIMS_Core.BusinessLayer.Converters
         {
             var directionName = reader.GetString();
 
-            using var context = new DimsCoreContext();
+            using var context = new DIMSContext();
             var direction = context.Directions.FirstOrDefault(x => x.Name == directionName);
 
             return direction?.DirectionId ?? 0;
@@ -42,7 +42,7 @@ namespace DIMS_Core.BusinessLayer.Converters
         {
             var directionId = value;
 
-            using var context = new DimsCoreContext();
+            using var context = new DIMSContext();
             var direction = context.Directions.FirstOrDefault(x => x.DirectionId == directionId);
 
             if (direction != null)
