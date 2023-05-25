@@ -9,21 +9,10 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VUserTrackRepository : IReadOnlyRepository<VUserTrack>
+    public class VUserTrackRepository : ReadOnlyRepository<VUserTrack>
     {
-        private readonly DIMSContext _context;
-        public VUserTrackRepository(DIMSContext context)
+        public VUserTrackRepository(DIMSContext context) : base(context)
         {
-            _context = context;
-        }
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
-
-        public IQueryable<VUserTrack> GetAll()
-        {
-            return _context.VUserTracks.AsNoTracking();
         }
     }
 }

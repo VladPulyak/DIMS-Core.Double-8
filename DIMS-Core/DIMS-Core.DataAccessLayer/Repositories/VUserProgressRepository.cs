@@ -9,22 +9,10 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VUserProgressRepository : IReadOnlyRepository<VUserProgress>
+    public class VUserProgressRepository : ReadOnlyRepository<VUserProgress>
     {
-        private readonly DIMSContext _context;
-
-        public VUserProgressRepository(DIMSContext context)
+        public VUserProgressRepository(DIMSContext context) : base(context)
         {
-            _context = context;
-        }
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
-
-        public IQueryable<VUserProgress> GetAll()
-        {
-            return _context.VUserProgresses.AsNoTracking();
         }
     }
 }
