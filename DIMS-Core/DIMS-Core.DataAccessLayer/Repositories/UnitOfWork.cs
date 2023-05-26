@@ -1,5 +1,5 @@
 using System;
-using System.Threading.Tasks;
+using Task = System.Threading.Tasks.Task;
 using DIMS_Core.DataAccessLayer.Interfaces;
 using DIMS_Core.DataAccessLayer.Models;
 
