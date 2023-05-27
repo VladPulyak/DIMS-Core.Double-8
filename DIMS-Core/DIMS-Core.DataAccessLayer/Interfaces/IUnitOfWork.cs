@@ -1,5 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+using System;
+using TaskExample = System.Threading.Tasks.Task;
 using DIMS_Core.DataAccessLayer.Models;
 
 namespace DIMS_Core.DataAccessLayer.Interfaces
@@ -12,6 +12,6 @@ namespace DIMS_Core.DataAccessLayer.Interfaces
 
         IReadOnlyRepository<VUserProfile> VUserProfileRepository { get; }
 
-        Task Save();
+        TaskExample Save();
     }
 }
