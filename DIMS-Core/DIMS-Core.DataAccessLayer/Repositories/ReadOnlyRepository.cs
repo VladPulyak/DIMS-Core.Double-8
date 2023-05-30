@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public abstract class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity>
+    public abstract class ReadOnlyRepository<TEntity> : IReadOnlyRepository<TEntity> 
         where TEntity : class
     {
         private readonly DIMSContext _context;

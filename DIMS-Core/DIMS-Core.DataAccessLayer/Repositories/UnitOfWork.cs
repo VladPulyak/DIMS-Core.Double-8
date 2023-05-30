@@ -18,20 +18,32 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         public UnitOfWork(DIMSContext context,
                           IRepository<UserProfile> userProfileRepository,
                           IRepository<Direction> directionRepository,
+                          IRepository<TaskState> taskStateRepository,
+                          IRepository<TaskTrack> taskTrackRepository,
+                          IRepository<UserTask> userTaskRepository,
+                          IReadOnlyRepository<VUserTask> vUserTaskRepository,
                           IReadOnlyRepository<VUserProfile> vUserProfileRepository)
         {
             _context = context;
 
             UserProfileRepository = userProfileRepository ?? throw new ArgumentNullException(nameof(userProfileRepository));
             DirectionRepository = directionRepository ?? throw new ArgumentNullException(nameof(directionRepository));
+            UserTaskRepository = userTaskRepository ?? throw new ArgumentNullException(nameof(userTaskRepository));
+            TaskTrackRepository = taskTrackRepository ?? throw new ArgumentNullException(nameof(taskTrackRepository));
+            TaskStateRepository = taskStateRepository ?? throw new ArgumentNullException(nameof(taskStateRepository));
             VUserProfileRepository = vUserProfileRepository ?? throw new ArgumentNullException(nameof(vUserProfileRepository));
+            VUserTaskRepository = vUserTaskRepository ?? throw new ArgumentNullException(nameof(vUserTaskRepository));
         }
 
         public IRepository<UserProfile> UserProfileRepository { get; }
 
         public IRepository<Direction> DirectionRepository { get; }
+        public IRepository<TaskState> TaskStateRepository { get; }
+        public IRepository<TaskTrack> TaskTrackRepository { get; }
+        public IRepository<UserTask> UserTaskRepository { get; }
 
         public IReadOnlyRepository<VUserProfile> VUserProfileRepository { get; }
+        public IReadOnlyRepository<VUserTask> VUserTaskRepository { get; }
 
         /// <summary>
         ///     This method is not important here because each repository already has same method.

@@ -31,14 +31,13 @@ namespace DIMS_Core.DataAccessLayer.Repositories
             {
                 throw new InvalidArgumentException("You inputed invalid argument");
             }
-
             var objectFromDB = await Set.FindAsync(id);
-
+          
             if (objectFromDB is null)
             {
-
+                throw new ObjectNotFoundException("GetById", "This object isn't found in database"); 
             }
-
+          
             return objectFromDB;
         }
 

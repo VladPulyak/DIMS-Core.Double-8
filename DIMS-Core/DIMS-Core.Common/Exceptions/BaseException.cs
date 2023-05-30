@@ -7,8 +7,13 @@ namespace DIMS_Core.Common.Exceptions
     /// </summary>
     public abstract class BaseException : Exception
     {
+        public BaseException(string message, Exception innerException) : base(message, innerException)
+        {
+
+        }
         public BaseException(string message) : base(message)
-        {            
+        {
+        
         }
     }
 }
