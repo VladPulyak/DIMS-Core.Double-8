@@ -25,41 +25,42 @@ namespace DIMS_Core.DataAccessLayer.Repositories
             return Set.AsQueryable();
         }
 
-        public Task<TEntity> GetById(int id)
+        public async Task<TEntity> GetById(int id)
         {
             if (id == 0)
             {
-
+                throw new InvalidArgumentException("You inputed invalid argument");
             }
-
-            object objectFromDB = null;
-
+            var objectFromDB = await Set.FindAsync(id);
+          
             if (objectFromDB is null)
             {
                 throw new ObjectNotFoundException("GetById", "This object isn't found in database"); 
             }
-
-            throw new NotImplementedException();
+          
+            return objectFromDB;
         }
 
-        public Task<TEntity> Create(TEntity entity)
+        public async Task<TEntity> Create(TEntity entity)
         {
-            throw new NotImplementedException();
+            var obj = await Set.AddAsync(entity);
+            return obj.Entity;
         }
 
         public TEntity Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            return Set.Update(entity).Entity;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = await GetById(id);
+            Set.Remove(entity);
         }
 
         public Task Save()
         {
-            throw new NotImplementedException();
+            return _context.SaveChangesAsync();
         }
 
         public void Dispose()

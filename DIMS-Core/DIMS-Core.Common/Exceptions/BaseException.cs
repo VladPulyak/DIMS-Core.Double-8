@@ -13,7 +13,7 @@ namespace DIMS_Core.Common.Exceptions
         }
         public BaseException(string message) : base(message)
         {
-
+        
         }
     }
 }
