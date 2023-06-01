@@ -10,27 +10,26 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal class TaskStateRepositoryFixture : IDisposable
+    internal class VUserTrackRepositoryFixture : IDisposable
     {
-        public TaskStateRepositoryFixture()
+        public VUserTrackRepositoryFixture()
         {
             Context = CreateContext();
-            Repository = new TaskStateRepository(Context);
+            Repository = new VUserTrackRepository(Context);
             InitDatabase();
         }
 
         public DIMSContext Context { get; }
-        public IRepository<TaskState> Repository { get; }
-        public int StateId { get; private set; }
-
+        public IReadOnlyRepository<VUserTrack> Repository { get; }
         private void InitDatabase()
         {
-            var entity = Context.TaskStates.Add(new TaskState()
+            var entity = Context.VUserTracks.Add(new VUserTrack()
             {
-                StateName = "Test"
+                TaskName = "Test",
+                TrackDate = DateTime.Now,
+                TrackNote = "Test"
             });
             Context.SaveChanges();
-            StateId = entity.Entity.StateId;
             entity.State = EntityState.Detached;
         }
 

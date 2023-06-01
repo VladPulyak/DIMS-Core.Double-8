@@ -10,27 +10,27 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal class TaskStateRepositoryFixture : IDisposable
+    internal class TaskTrackRepositoryFixture : IDisposable
     {
-        public TaskStateRepositoryFixture()
+        public TaskTrackRepositoryFixture()
         {
             Context = CreateContext();
-            Repository = new TaskStateRepository(Context);
-            InitDatabase();
+            Repository = new TaskTrackRepository(Context);
+
         }
-
         public DIMSContext Context { get; }
-        public IRepository<TaskState> Repository { get; }
-        public int StateId { get; private set; }
-
+        public IRepository<TaskTrack> Repository { get; }
+        public int TaskTrackId { get; set; }
+        
         private void InitDatabase()
         {
-            var entity = Context.TaskStates.Add(new TaskState()
+            var entity = Context.TaskTracks.Add(new TaskTrack
             {
-                StateName = "Test"
+                TrackNote = "Test",
+                TrackDate = DateTime.Now
             });
             Context.SaveChanges();
-            StateId = entity.Entity.StateId;
+            TaskTrackId = entity.Entity.TaskTrackId;
             entity.State = EntityState.Detached;
         }
 
@@ -41,11 +41,11 @@ namespace DIMS_Core.Tests.Repositories.Fixtures
 
         private static DbContextOptions<DIMSContext> GetOptions()
         {
-            var builder = new DbContextOptionsBuilder<DIMSContext>().UseInMemoryDatabase(GetDBName());
+            var builder = new DbContextOptionsBuilder<DIMSContext>().UseInMemoryDatabase(GetDbName());
             return builder.Options;
         }
 
-        private static string GetDBName()
+        private static string GetDbName()
         {
             return $"InMemory_{Guid.NewGuid()}";
         }

@@ -10,27 +10,23 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal class TaskStateRepositoryFixture : IDisposable
+    internal class UserTaskRepositoryFixture : IDisposable
     {
-        public TaskStateRepositoryFixture()
+        public UserTaskRepositoryFixture()
         {
             Context = CreateContext();
-            Repository = new TaskStateRepository(Context);
+            Repository = new UserTaskRepository(Context);
             InitDatabase();
         }
 
         public DIMSContext Context { get; }
-        public IRepository<TaskState> Repository { get; }
-        public int StateId { get; private set; }
-
+        public IRepository<UserTask> Repository { get; }
+        public int UserTaskId { get; private set; }
         private void InitDatabase()
         {
-            var entity = Context.TaskStates.Add(new TaskState()
-            {
-                StateName = "Test"
-            });
+            var entity = Context.UserTasks.Add(new UserTask());
             Context.SaveChanges();
-            StateId = entity.Entity.StateId;
+            UserTaskId = entity.Entity.UserTaskId;
             entity.State = EntityState.Detached;
         }
 

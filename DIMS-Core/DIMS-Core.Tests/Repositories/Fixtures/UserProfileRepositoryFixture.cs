@@ -10,27 +10,37 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal class TaskStateRepositoryFixture : IDisposable
+    internal class UserProfileRepositoryFixture : IDisposable
     {
-        public TaskStateRepositoryFixture()
+        public UserProfileRepositoryFixture()
         {
             Context = CreateContext();
-            Repository = new TaskStateRepository(Context);
+            Repository = new UserProfileRepository(Context);
             InitDatabase();
         }
 
         public DIMSContext Context { get; }
-        public IRepository<TaskState> Repository { get; }
-        public int StateId { get; private set; }
-
+        public IRepository<UserProfile> Repository { get; }
+        public int UserId { get; private set; }
         private void InitDatabase()
         {
-            var entity = Context.TaskStates.Add(new TaskState()
+            var entity = Context.UserProfiles.Add(new UserProfile
             {
-                StateName = "Test"
+                FirstName = "Test",
+                LastName = "Test",
+                Email = "Test@test.com",
+                Address = "Test street",
+                BirthDate = DateTime.Now,
+                Education = "QA",
+                MathScore = 0,
+                MobilePhone = "1234567",
+                Sex = 0,
+                Skype = "Test",
+                StartDate = DateTime.Now,
+                UniversityAverageScore = 0
             });
             Context.SaveChanges();
-            StateId = entity.Entity.StateId;
+            UserId = entity.Entity.UserId;
             entity.State = EntityState.Detached;
         }
 
