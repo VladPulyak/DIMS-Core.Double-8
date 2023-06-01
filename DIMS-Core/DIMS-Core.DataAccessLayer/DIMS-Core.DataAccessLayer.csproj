@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UseNETCoreGenerator>true</UseNETCoreGenerator>
     <RootNamespace>DIMS_Core.DataAccessLayer</RootNamespace>
     <UserSecretsId>a976e32f-9ee7-491c-a12d-c0d658c5292c</UserSecretsId>
