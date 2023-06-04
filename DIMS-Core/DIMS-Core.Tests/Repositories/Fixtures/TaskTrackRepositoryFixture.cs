@@ -16,7 +16,7 @@ namespace DIMS_Core.Tests.Repositories.Fixtures
         {
             Context = CreateContext();
             Repository = new TaskTrackRepository(Context);
-
+            InitDatabase();
         }
         public DIMSContext Context { get; }
         public IRepository<TaskTrack> Repository { get; }
