@@ -12,19 +12,6 @@ namespace DIMS_Core.DataAccessLayer.Repositories
     {
         public TaskStateRepository(DIMSContext context) : base(context)
         {
-            Context = context;
-        }
-
-        public DIMSContext Context { get; }
-
-        public async AsyncTask SetUserTaskAsFail(int userId, int taskId)
-        {
-            await Context.Database.ExecuteSqlRawAsync("execute SetUserTaskAsFail @UserId, @TaskId", userId, taskId);
-        }
-
-        public async AsyncTask SetUserTaskAsSuccess(int userId, int taskId)
-        {
-            await Context.Database.ExecuteSqlRawAsync("execute SetUserTaskAsSuccess @UserId, @TaskId", userId, taskId);
         }
     }
 }
