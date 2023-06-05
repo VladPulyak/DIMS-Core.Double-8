@@ -9,7 +9,7 @@ using AsyncTask = System.Threading.Tasks.Task;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class UserTaskRepository : Repository<UserTask>, IUserTaskStoreProcedures
+    public class UserTaskRepository : Repository<UserTask>, IUserTaskRepository
     {
         public UserTaskRepository(DIMSContext context) : base(context)
         {
