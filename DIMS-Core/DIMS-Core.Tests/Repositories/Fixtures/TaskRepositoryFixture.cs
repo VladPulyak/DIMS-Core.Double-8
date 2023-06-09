@@ -9,21 +9,19 @@ using System.Text;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal class TaskRepositoryFixture : IDisposable
+    internal sealed class TaskRepositoryFixture : AbstractRepositoryFixture, IDisposable
     {
-        public TaskRepositoryFixture()
+        public TaskRepositoryFixture() : base()
         {
-            Context = CreateContext();
             Repository = new TaskRepository(Context);
             InitDatabase();
         }
-        public IRepository<Task> Repository { get; }
 
-        public DIMSContext Context { get; }
+        public IRepository<Task> Repository { get; }
 
         public int TaskId { get; private set; }
 
-        private void InitDatabase()
+        protected override void InitDatabase()
         {
             var entity = Context.Tasks.Add(new Task()
             {
@@ -35,27 +33,6 @@ namespace DIMS_Core.Tests.Repositories.Fixtures
             TaskId = entity.Entity.TaskId;
             Context.SaveChanges();
             entity.State = EntityState.Detached;
-        }
-
-        private static DIMSContext CreateContext()
-        {
-            return new DIMSContext(GetOptions());
-        }
-
-        private static DbContextOptions<DIMSContext> GetOptions()
-        {
-            var builder = new DbContextOptionsBuilder<DIMSContext>().UseInMemoryDatabase(GetDBName());
-            return builder.Options;
-        }
-
-        private static string GetDBName()
-        {
-            return $"InMemory_{Guid.NewGuid()}";
-        }
-
-        public void Dispose()
-        {
-            Context.Dispose();
         }
     }
 }

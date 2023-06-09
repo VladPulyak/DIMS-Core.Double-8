@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal class UserProfileRepositoryFixture : IDisposable
+    internal sealed class UserProfileRepositoryFixture : AbstractRepositoryFixture, IDisposable
     {
         public UserProfileRepositoryFixture()
         {
-            Context = CreateContext();
             Repository = new UserProfileRepository(Context);
             InitDatabase();
         }
 
-        public DIMSContext Context { get; }
         public IRepository<UserProfile> Repository { get; }
+
         public int UserId { get; private set; }
-        private void InitDatabase()
+
+        protected override void InitDatabase()
         {
             var entity = Context.UserProfiles.Add(new UserProfile
             {
@@ -42,27 +42,6 @@ namespace DIMS_Core.Tests.Repositories.Fixtures
             Context.SaveChanges();
             UserId = entity.Entity.UserId;
             entity.State = EntityState.Detached;
-        }
-
-        private static DIMSContext CreateContext()
-        {
-            return new DIMSContext(GetOptions());
-        }
-
-        private static DbContextOptions<DIMSContext> GetOptions()
-        {
-            var builder = new DbContextOptionsBuilder<DIMSContext>().UseInMemoryDatabase(GetDBName());
-            return builder.Options;
-        }
-
-        private static string GetDBName()
-        {
-            return $"InMemory_{Guid.NewGuid()}";
-        }
-
-        public void Dispose()
-        {
-            Context.Dispose();
         }
     }
 }
