@@ -262,10 +262,6 @@ namespace DIMS_Core.DataAccessLayer.Models
                     .IsRequired()
                     .HasMaxLength(250);
             });
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
