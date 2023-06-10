@@ -1,5 +1,5 @@
 using System;
-using TaskExample = System.Threading.Tasks.Task;
+using AsyncTask = System.Threading.Tasks.Task;
 using DIMS_Core.DataAccessLayer.Models;
 
 namespace DIMS_Core.DataAccessLayer.Interfaces
@@ -10,8 +10,24 @@ namespace DIMS_Core.DataAccessLayer.Interfaces
 
         IRepository<Direction> DirectionRepository { get; }
 
+        IRepository<Task> TaskRepository { get; }
+
+        IRepository<TaskState> TaskStateRepository { get; }
+
+        IRepository<UserTask> UserTaskRepository { get; }
+
+        IRepository<TaskTrack> TaskTrackRepository { get; }
+
         IReadOnlyRepository<VUserProfile> VUserProfileRepository { get; }
 
-        TaskExample Save();
+        IReadOnlyRepository<VTask> VTaskRepository { get; }
+
+        IReadOnlyRepository<VUserProgress> VUserProgressRepository { get; }
+
+        IReadOnlyRepository<VUserTask> VUserTaskRepository { get; }
+
+        IReadOnlyRepository<VUserTrack> VUserTrackRepository { get; }
+
+        AsyncTask Save();
     }
 }
