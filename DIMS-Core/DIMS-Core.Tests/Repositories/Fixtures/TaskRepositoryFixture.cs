@@ -9,15 +9,13 @@ using System.Text;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal sealed class TaskRepositoryFixture : AbstractRepositoryFixture, IDisposable
+    internal sealed class TaskRepositoryFixture : AbstractRepositoryFixture<Task>, IDisposable
     {
         public TaskRepositoryFixture() : base()
         {
             Repository = new TaskRepository(Context);
             InitDatabase();
         }
-
-        public IRepository<Task> Repository { get; }
 
         public int TaskId { get; private set; }
 

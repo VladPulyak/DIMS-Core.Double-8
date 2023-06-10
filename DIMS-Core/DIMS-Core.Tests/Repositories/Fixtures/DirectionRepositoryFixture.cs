@@ -6,15 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal sealed class DirectionRepositoryFixture : AbstractRepositoryFixture, IDisposable
+    internal sealed class DirectionRepositoryFixture : AbstractRepositoryFixture<Direction>, IDisposable
     {
         public DirectionRepositoryFixture() : base()
         {
             Repository = new DirectionRepository(Context);
             InitDatabase();
         }
-
-        public IRepository<Direction> Repository { get; }
 
         public int DirectionId { get; private set; }
 

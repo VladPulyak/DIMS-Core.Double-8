@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    public abstract class AbstractRepositoryFixture : IDisposable 
+    public abstract class AbstractRepositoryFixture<TEntity> : IDisposable
+        where TEntity : class
     {
         public AbstractRepositoryFixture()
         {
             Context = CreateContext();
         }
+
+        public IRepository<TEntity> Repository { get; protected set; }
 
         public DIMSContext Context { get; }
 

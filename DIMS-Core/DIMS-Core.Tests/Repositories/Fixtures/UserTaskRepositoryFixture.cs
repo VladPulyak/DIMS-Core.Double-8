@@ -10,15 +10,13 @@ using System.Threading.Tasks;
 
 namespace DIMS_Core.Tests.Repositories.Fixtures
 {
-    internal sealed class UserTaskRepositoryFixture : AbstractRepositoryFixture, IDisposable
+    internal sealed class UserTaskRepositoryFixture : AbstractRepositoryFixture<UserTask>, IDisposable
     {
         public UserTaskRepositoryFixture()
         {
             Repository = new UserTaskRepository(Context);
             InitDatabase();
         }
-
-        public IRepository<UserTask> Repository { get; }
 
         public int UserTaskId { get; private set; }
 
